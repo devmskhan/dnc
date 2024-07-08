@@ -76,7 +76,7 @@ function Home() {
       }
     };
     checkCooldownAndSetMaxClicks();
-  }, [canClick]);0
+  }, [canClick]);
 
   const handleButtonClick = () => {
     if (canClick()) {

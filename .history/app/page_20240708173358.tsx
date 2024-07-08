@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { useCallback, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { PencilSquareIcon, InformationCircleIcon, ChartBarIcon } from '@heroicons/react/24/solid';
 import { ArrowDownCircleIcon } from '@heroicons/react/24/outline';
 import { ThirdwebProvider, ConnectWallet, useAddress } from '@thirdweb-dev/react';
@@ -63,11 +63,11 @@ function Home() {
   const getRandomMaxClicks = () => Math.floor(Math.random() * (489000 - 250000 + 1)) + 250000;
   const getRandomClickCount = () => Math.floor(Math.random() * (50 - 25 + 1)) + 25;
 
-  const canClick = useCallback(() => {
+  const canClick = () => {
     if (!lastClaimTime) return true;
     const now = new Date().getTime();
     return now - lastClaimTime >= cooldownTime;
-  }, [lastClaimTime, cooldownTime]);
+  };
 
   useEffect(() => {
     const checkCooldownAndSetMaxClicks = () => {
@@ -76,7 +76,7 @@ function Home() {
       }
     };
     checkCooldownAndSetMaxClicks();
-  }, [canClick]);0
+  }, [canClicklastClaimTime]);
 
   const handleButtonClick = () => {
     if (canClick()) {
